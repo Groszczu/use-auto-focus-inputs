@@ -9,10 +9,11 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx --max-warnings 0",
-    "format": "prettier --config .prettierrc \"**/*.{json,js,jsx,ts,tsx,css,scss,md}\" --write",
+    "lint:fix": "yarn lint --fix",
+    "prettier:fix": "prettier --config .prettierrc \"**/*.{json,js,jsx,ts,tsx,css,scss,md}\" --write",
     "build": "tsc",
     "prepublishOnly": "yarn lint && yarn test",
-    "prepare": "npm run build"
+    "prepare": "npm run build && husky install"
   },
   "repository": {
     "type": "git",
@@ -47,14 +48,25 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "jest": "^27.0.6",
+    "lint-staged": "^11.1.1",
     "prettier": "^2.3.2",
     "react": "^17.0.1",
     "react-native": "^0.64.2",
     "react-test-renderer": "^17.0.2",
     "ts-jest": "^27.0.4",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "husky": "^7.0.0"
   },
   "resolutions": {
     "react-native/@jest/create-cache-key-function": "^27.0.2"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "yarn lint:fix",
+      "yarn prettier:fix"
+    ],
+    "*.{md,json,yml}": [
+      "yarn prettier:fix"
+    ]
   }
 }
