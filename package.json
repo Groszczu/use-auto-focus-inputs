@@ -1,0 +1,58 @@
+{
+  "name": "use-auto-focus-inputs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx --max-warnings 0",
+    "format": "prettier --config .prettierrc \"**/*.{json,js,jsx,ts,tsx,css,scss,md}\" --write",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Groszczu/use-auto-focus-inputs.git"
+  },
+  "keywords": [
+    "react-native",
+    "hooks",
+    "react-hooks",
+    "text-input",
+    "auto-focus",
+    "text-input-auto-focus",
+    "form"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Groszczu/use-auto-focus-inputs/issues"
+  },
+  "homepage": "https://github.com/Groszczu/use-auto-focus-inputs#readme",
+  "devDependencies": {
+    "@testing-library/jest-native": "^4.0.2",
+    "@testing-library/react-native": "^7.2.0",
+    "@types/jest": "^26.0.24",
+    "@types/react": "^17.0.15",
+    "@types/react-native": "^0.64.12",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2",
+    "react": "^17.0.1",
+    "react-native": "^0.64.2",
+    "react-test-renderer": "^17.0.2",
+    "ts-jest": "^27.0.4",
+    "typescript": "^4.3.5"
+  },
+  "resolutions": {
+    "react-native/@jest/create-cache-key-function": "^27.0.2"
+  }
+}
