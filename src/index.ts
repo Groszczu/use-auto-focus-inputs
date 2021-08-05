@@ -8,9 +8,8 @@ import {
 import callAll from './call-all';
 import mergeRefs from './merge-refs';
 
-type TextInputPropsWithOptionalRef = TextInputProps & {
-  ref?: React.Ref<TextInput>;
-};
+type TextInputPropsWithOptionalRef = TextInputProps &
+  React.RefAttributes<TextInput>;
 
 type UseAutoFocusInputsReturnType = <
   TProps extends TextInputPropsWithOptionalRef,
