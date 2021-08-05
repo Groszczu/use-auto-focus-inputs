@@ -10,5 +10,5 @@
     "types": ["node", "jest", "@testing-library/jest-native"]
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/__tests__/*"]
+  "exclude": ["node_modules", "examples", "**/__tests__/*"]
 }

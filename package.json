@@ -10,7 +10,9 @@
     "test": "jest",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx --max-warnings 0",
     "format": "prettier --config .prettierrc \"**/*.{json,js,jsx,ts,tsx,css,scss,md}\" --write",
-    "build": "tsc"
+    "build": "tsc",
+    "prepublishOnly": "yarn lint && yarn test",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",

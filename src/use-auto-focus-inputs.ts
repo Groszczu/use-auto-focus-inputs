@@ -8,13 +8,10 @@ import {
 import callAll from './call-all';
 import mergeRefs from './merge-refs';
 
-type TextInputRef =
-  | React.RefObject<TextInput>
-  | React.Ref<TextInput | null>
-  | undefined;
+type TextInputRef = React.RefObject<TextInput> | React.Ref<TextInput | null>;
 
 function useAutoFocusInputs({initialRerender = true} = {}): <TProps>(
-  props: TextInputProps & {ref: TextInputRef} & TProps,
+  props: TextInputProps & {ref?: TextInputRef} & TProps,
 ) => TextInputProps & {ref: React.Ref<TextInput>} & TProps {
   const inputRefsRef = React.useRef<React.RefObject<TextInput>[]>([]);
   const inputIndexRef = React.useRef(-1);
@@ -37,7 +34,7 @@ function useAutoFocusInputs({initialRerender = true} = {}): <TProps>(
       onSubmitEditing,
       ...props
     }: TextInputProps & {
-      ref: TextInputRef;
+      ref?: TextInputRef;
     } & TProps): TextInputProps & {ref: React.Ref<TextInput>} & TProps => {
       inputIndexRef.current += 1;
       const currentInputIndex = inputIndexRef.current;
