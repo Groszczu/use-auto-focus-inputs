@@ -8,11 +8,15 @@ import {
 import callAll from './call-all';
 import mergeRefs from './merge-refs';
 
+type TextInputPropsWithOptionalRef = TextInputProps & {
+  ref?: React.Ref<TextInput>;
+};
+
 type UseAutoFocusInputsReturnType = <
-  TProps extends TextInputProps & {ref?: React.Ref<TextInput>},
+  TProps extends TextInputPropsWithOptionalRef,
 >(
   props: TProps,
-) => unknown;
+) => TProps;
 
 function useAutoFocusInputs({
   initialRerender = true,
@@ -32,36 +36,43 @@ function useAutoFocusInputs({
     }
   }, [initialRerender, rerendered]);
 
-  return React.useCallback(({ref, onSubmitEditing, ...props}) => {
-    inputIndexRef.current += 1;
-    const currentInputIndex = inputIndexRef.current;
+  return React.useCallback(
+    <TProps extends TextInputPropsWithOptionalRef>({
+      ref,
+      onSubmitEditing,
+      ...props
+    }: TProps): TProps => {
+      inputIndexRef.current += 1;
+      const currentInputIndex = inputIndexRef.current;
 
-    let inputRef = inputRefsRef.current[currentInputIndex];
-    if (!inputRef) {
-      inputRef = React.createRef<TextInput>();
-      inputRefsRef.current.push(inputRef);
-    }
+      let inputRef = inputRefsRef.current[currentInputIndex];
+      if (!inputRef) {
+        inputRef = React.createRef<TextInput>();
+        inputRefsRef.current.push(inputRef);
+      }
 
-    const nextInput = inputRefsRef.current[currentInputIndex + 1];
-    return {
-      ref: mergeRefs(ref, inputRef),
-      returnKeyType: nextInput ? 'next' : 'done',
-      blurOnSubmit: !nextInput,
-      onSubmitEditing: callAll(
-        nextInput
-          ? // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            (_e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
-              const nextInputRef = nextInput?.current;
-              if (nextInputRef) {
-                nextInputRef.focus();
+      const nextInput = inputRefsRef.current[currentInputIndex + 1];
+      return {
+        ref: mergeRefs(ref, inputRef),
+        returnKeyType: nextInput ? 'next' : 'done',
+        blurOnSubmit: !nextInput,
+        onSubmitEditing: callAll(
+          nextInput
+            ? // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
+                const nextInputRef = nextInput?.current;
+                if (nextInputRef) {
+                  nextInputRef.focus();
+                }
               }
-            }
-          : undefined,
-        onSubmitEditing,
-      ),
-      ...props,
-    };
-  }, []);
+            : undefined,
+          onSubmitEditing,
+        ),
+        ...props,
+      } as TProps;
+    },
+    [],
+  );
 }
 
 export default useAutoFocusInputs;
