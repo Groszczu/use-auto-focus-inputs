@@ -1,5 +1,11 @@
 # use-auto-focus-inputs
 
+## Demo
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/Groszczu/use-auto-focus-inputs/main/demo/demo.gif" alt="Usage With Simple Form" width="30%" />
+</div>
+
 ## Features
 
 - One, headless hook
