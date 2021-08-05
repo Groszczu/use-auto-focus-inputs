@@ -1,7 +1,7 @@
 import {fireEvent, render} from '@testing-library/react-native';
 import * as React from 'react';
 import {TextInput, View} from 'react-native';
-import useAutoFocusInputs from '../../dist/use-auto-focus-inputs';
+import useAutoFocusInputs from '../';
 
 let input1Ref: React.RefObject<TextInput>;
 let input2Ref: React.RefObject<TextInput>;
