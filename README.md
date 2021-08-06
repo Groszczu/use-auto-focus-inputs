@@ -6,6 +6,8 @@
     <img src="https://raw.githubusercontent.com/Groszczu/use-auto-focus-inputs/main/demo/demo.gif" alt="Usage With Simple Form" width="30%" />
 </div>
 
+Check out example project on [expo snack](https://snack.expo.dev/ZHw6A6KIN).
+
 ## Features
 
 - One, headless hook
