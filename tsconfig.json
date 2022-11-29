@@ -7,8 +7,11 @@
     "outDir": "./dist",
     "strict": true,
     "skipLibCheck": true,
-    "types": ["node", "jest", "@testing-library/jest-native"]
+    "types": ["node", "jest", "@testing-library/jest-native"],
+    "paths": {
+      "use-auto-focus-inputs": ["./src/index.ts"]
+    }
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "examples", "**/__tests__/*"]
+  "include": ["src", "examples"],
+  "exclude": ["node_modules"]
 }

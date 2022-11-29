@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {TextInput, View} from 'react-native';
-import useAutoFocusInputs from '../src/use-auto-focus-inputs';
+import useAutoFocusInputs from 'use-auto-focus-inputs';
 
 function SimpleForm(): JSX.Element {
   const [firstName, setFirstName] = React.useState('');
