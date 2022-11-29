@@ -12,7 +12,7 @@
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx --max-warnings 0",
     "lint:fix": "yarn lint --fix",
     "prettier:fix": "prettier --config .prettierrc \"**/*.{json,js,jsx,ts,tsx,css,scss,md}\" --write",
-    "build": "tsc",
+    "build": "tsc --project tsconfig.build.json",
     "prepublishOnly": "yarn lint && yarn test",
     "prepare": "yarn build && husky install"
   },
@@ -56,7 +56,7 @@
     "react-native": "^0.64.2",
     "react-test-renderer": "^17.0.2",
     "ts-jest": "^27.0.4",
-    "typescript": "^4.3.5"
+    "typescript": "^4.9.3"
   },
   "resolutions": {
     "react-native/@jest/create-cache-key-function": "^27.0.2"
