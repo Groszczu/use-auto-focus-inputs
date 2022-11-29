@@ -13,6 +13,8 @@
     "lint:fix": "yarn lint --fix",
     "prettier:fix": "prettier --config .prettierrc \"**/*.{json,js,jsx,ts,tsx,css,scss,md}\" --write",
     "build": "tsc --project tsconfig.build.json",
+    "release": "yarn build && yarn publish",
+    "publish": "yarn changesets publish",
     "prepublishOnly": "yarn lint && yarn test",
     "prepare": "yarn build && husky install"
   },
@@ -29,20 +31,21 @@
     "text-input-auto-focus",
     "form"
   ],
-  "author": "",
+  "author": "Groszczu",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Groszczu/use-auto-focus-inputs/issues"
   },
   "homepage": "https://github.com/Groszczu/use-auto-focus-inputs#readme",
   "devDependencies": {
+    "@changesets/cli": "^2.25.2",
     "@testing-library/jest-native": "^4.0.2",
     "@testing-library/react-native": "^7.2.0",
     "@types/jest": "^26.0.24",
     "@types/react": "^17.0.15",
     "@types/react-native": "^0.64.12",
-    "@typescript-eslint/eslint-plugin": "^4.29.0",
-    "@typescript-eslint/parser": "^4.29.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
@@ -58,6 +61,10 @@
     "ts-jest": "^27.0.4",
     "typescript": "^4.9.3"
   },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-native": ">=0.59"
+  },
   "resolutions": {
     "react-native/@jest/create-cache-key-function": "^27.0.2"
   },
@@ -69,9 +76,6 @@
     "*.{md,json,yml}": [
       "yarn prettier:fix"
     ]
-  },
-  "dependencies": {
-    "@changesets/cli": "^2.25.2"
   },
   "packageManager": "yarn@3.3.0"
 }
