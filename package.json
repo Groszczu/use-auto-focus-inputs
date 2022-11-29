@@ -70,5 +70,7 @@
       "yarn prettier:fix"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "@changesets/cli": "^2.25.2"
+  }
 }
