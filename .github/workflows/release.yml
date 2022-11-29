@@ -30,15 +30,6 @@ jobs:
       - name: Test
         run: yarn test
 
-      - name: Creating .npmrc
-        run: |
-          cat << EOF > "$HOME/.npmrc"
-            //registry.npmjs.org/:_authToken=$NPM_TOKEN
-            access=public
-          EOF
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - name: Create Release Pull Request or Publish to npm
         if: ${{ !env.ACT }}
         id: changesets
