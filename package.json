@@ -14,7 +14,7 @@
     "prettier:fix": "prettier --config .prettierrc \"**/*.{json,js,jsx,ts,tsx,css,scss,md}\" --write",
     "build": "tsc --project tsconfig.build.json",
     "release": "yarn build && yarn publish",
-    "publish": "yarn changesets publish",
+    "publish": "yarn changeset publish",
     "prepublishOnly": "yarn lint && yarn test",
     "prepare": "yarn build && husky install"
   },
