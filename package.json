@@ -37,6 +37,7 @@
     "url": "https://github.com/Groszczu/use-auto-focus-inputs/issues"
   },
   "homepage": "https://github.com/Groszczu/use-auto-focus-inputs#readme",
+  "dependencies": {},
   "devDependencies": {
     "@changesets/cli": "^2.25.2",
     "@testing-library/jest-native": "^4.0.2",
