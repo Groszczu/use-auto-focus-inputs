@@ -1,19 +1,10 @@
-const jestDefaultConfig = {
-  clearMocks: true,
-  resetMocks: true,
-  restoreMocks: true,
-  rootDir: '.',
-  roots: ['<rootDir>/src'],
-  preset: 'ts-jest',
-  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
-};
-
-const native = {
-  ...jestDefaultConfig,
-  displayName: {
-    name: 'React Native',
-    color: 'magenta',
-  },
+module.exports = {
+  collectCoverageFrom: [
+    '**/src/*.{ts,tsx}',
+    '!**/**/*.test.{ts,tsx}',
+    '!**/node_modules/**',
+    '!**/dist/**',
+  ],
   preset: 'react-native',
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
@@ -23,15 +14,4 @@ const native = {
     '[/\\\\]node_modules[/\\\\](?!(@react-native|react-native)[/\\\\])',
   ],
   setupFilesAfterEnv: ['<rootDir>/jest/setupAfterEnv.ts'],
-};
-
-module.exports = {
-  collectCoverageFrom: [
-    '**/**/*.{ts,tsx}',
-    '!**/**/*.test.{ts,tsx}',
-    '!**/src/types/**',
-    '!**/node_modules/**',
-    '!**/dist/**',
-  ],
-  projects: [native],
 };

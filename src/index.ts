@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  NativeSyntheticEvent,
-  TextInput,
-  TextInputProps,
-  TextInputSubmitEditingEventData,
-} from 'react-native';
+import {TextInput, TextInputProps} from 'react-native';
 import callAll from './call-all';
 import mergeRefs from './merge-refs';
 
@@ -56,16 +51,15 @@ function useAutoFocusInputs({
         returnKeyType: nextInput ? 'next' : 'done',
         blurOnSubmit: !nextInput,
         onSubmitEditing: callAll(
+          onSubmitEditing,
           nextInput
-            ? // eslint-disable-next-line @typescript-eslint/no-unused-vars
-              (_e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
-                const nextInputRef = nextInput?.current;
+            ? () => {
+                const nextInputRef = nextInput.current;
                 if (nextInputRef) {
                   nextInputRef.focus();
                 }
               }
             : undefined,
-          onSubmitEditing,
         ),
         ...props,
       } as TProps;

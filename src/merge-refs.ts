@@ -1,25 +1,24 @@
 import * as React from 'react';
 
+type MutableRef<T extends React.ReactNode> =
+  | React.MutableRefObject<T | null>
+  | React.RefCallback<T>;
+
 function mergeRefs<T extends React.ReactNode>(
-  ...refs: (
-    | React.MutableRefObject<T | null>
-    | ((instance: T | null) => void)
-    | null
-    | undefined
-  )[]
+  ...refs: (MutableRef<T> | null | undefined)[]
 ): React.Ref<T> {
-  const filteredRefs = refs.filter(Boolean);
+  const filteredRefs = refs.filter(Boolean) as MutableRef<T>[];
   if (!filteredRefs.length) {
     return null;
   }
   if (filteredRefs.length === 1) {
-    return filteredRefs[0] ?? null;
+    return filteredRefs[0];
   }
   return (instance) => {
     filteredRefs.forEach((ref) => {
       if (typeof ref === 'function') {
         ref(instance);
-      } else if (ref) {
+      } else {
         ref.current = instance;
       }
     });
